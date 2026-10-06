@@ -1,0 +1,23 @@
+import drCasa.*
+
+describe "grupo de tests" {
+
+    const malaria  = new Infecciosa(cantCelulasQueAmenaza = 5000)
+    const otitis = new Infecciosa(cantCelulasQueAmenaza = 1000)
+    const lupus = new Autoinmune(cantCelulasQueAmenaza = 5000) 
+    const malariaPulente = new Infecciosa(cantCelulasQueAmenaza= 80000)
+    
+    const logan = new Persona(temperatura= 36, cantCelulas = 3000000) 
+    const frank = new Persona(temperatura = 36, cantCelulas = 3500000)
+
+    method initialize() {
+        logan.contraer(malaria)
+        logan.contraer(otitis) 
+         logan.contraer(lupus)
+    }
+
+    test " frank contraer enfermedad" {
+        frank.contraer(malariaPulente)
+        assert.that(frank.enfermedades().contains(malariaPulente))
+    }
+}
